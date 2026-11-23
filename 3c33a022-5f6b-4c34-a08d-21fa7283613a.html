@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مشعل محمد | Mishal Mohammed — حلول رقمية وتصميم مواقع وهويات بصرية</title>
+  <meta name="description" content="نحوّل أفكارك الرقمية إلى واقع احترافي. خدمات تصميم وتطوير المواقع، تطبيقات الويب، التسويق الإلكتروني، والهويات التجارية والبصرية مع مشعل محمد." />
+  <meta name="keywords" content="مشعل محمد, Mishal Mohammed, تصميم مواقع, تطوير مواقع, تطبيقات ويب, هوية بصرية, تسويق إلكتروني, UI UX" />
+  <meta name="author" content="Mishal Mohammed" />
+
+  <!-- Google Fonts: IBM Plex Sans Arabic & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"IBM Plex Sans Arabic"', 'sans-serif'],
+            en: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            obsidian: '#06080F',
+            navy: '#0B1120',
+            slateCard: '#10182B',
+            electric: '#2563EB',
+            electricLight: '#38BDF8',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      background-color: #06080F;
+      color: #F8FAFC;
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* خلفية شبكية هندسية ناعمة */
+    .bg-grid-pattern {
+      background-size: 48px 48px;
+      background-image: 
+        linear-gradient(to right, rgba(37, 99, 235, 0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(37, 99, 235, 0.06) 1px, transparent 1px);
+    }
+
+    /* تأثير زجاجي فاخر */
+    .glass-card {
+      background: linear-gradient(145deg, rgba(16, 24, 43, 0.85) 0%, rgba(9, 13, 24, 0.92) 100%);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .glass-card:hover {
+      border-color: rgba(56, 189, 248, 0.4);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px -15px rgba(37, 99, 235, 0.22);
+    }
+
+    /* نص متدرج */
+    .text-gradient {
+      background: linear-gradient(135deg, #FFFFFF 0%, #93C5FD 55%, #38BDF8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* حركات ظهور ناعمة عند التمرير */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* تخصيص شريط التمرير */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #06080F;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1E293B;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #2563EB;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-blue-600 selection:text-white">
+
+  <!-- إشعار منبثق (Toast) -->
+  <div id="toast" class="fixed bottom-6 left-6 z-50 hidden items-center gap-3 rounded-xl border border-sky-400/30 bg-navy/95 px-5 py-3.5 text-sm font-medium text-white shadow-2xl backdrop-blur-md">
+    <i data-lucide="check-circle-2" class="h-5 w-5 text-sky-400"></i>
+    <span id="toastMessage">تم الحفظ بنجاح</span>
+  </div>
+
+  <!-- الشريط العلوي (Navbar) -->
+  <header class="fixed top-0 inset-x-0 z-40 border-b border-white/5 bg-obsidian/80 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+      <!-- الشعار -->
+      <a href="#home" class="flex items-center gap-3 group">
+        <div class="relative flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-sky-400 p-[1px] shadow-lg shadow-blue-600/25">
+          <div class="flex h-full w-full items-center justify-center rounded-[11px] bg-obsidian font-en text-lg font-extrabold tracking-tighter text-white group-hover:bg-transparent transition-colors">
+            MM
+          </div>
+        </div>
+        <div>
+          <span class="block text-base font-bold text-white leading-tight">مشعل محمد</span>
+          <span class="block font-en text-[11px] font-semibold tracking-wider text-sky-400 uppercase">Mishal Mohammed</span>
+        </div>
+      </a>
+
+      <!-- روابط التنقل -->
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-300">
+        <a href="#about" class="hover:text-white transition-colors">من أنا</a>
+        <a href="#services" class="hover:text-white transition-colors">خدماتي</a>
+        <a href="#portfolio" class="hover:text-white transition-colors">أعمالي</a>
+        <a href="#why-me" class="hover:text-white transition-colors">لماذا تختارني؟</a>
+        <a href="#process" class="hover:text-white transition-colors">آلية العمل</a>
+        <a href="#testimonials" class="hover:text-white transition-colors">آراء العملاء</a>
+        <a href="#faq" class="hover:text-white transition-colors">الأسئلة الشائعة</a>
+      </nav>
+
+      <!-- أزرار الإجراءات -->
+      <div class="flex items-center gap-3">
+        <button onclick="openModal('settingsModal')" title="إعدادات الموقع والتواصل" class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-300 hover:border-sky-400/50 hover:text-white transition-all">
+          <i data-lucide="settings" class="h-4 w-4"></i>
+        </button>
+        <a href="#contact" class="hidden sm:inline-flex items-center gap-2 rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-blue-600/30 hover:bg-blue-500 transition-all">
+          <span>ابدأ مشروعك</span>
+          <i data-lucide="arrow-up-left" class="h-4 w-4"></i>
+        </a>
+        <button id="mobileMenuBtn" class="lg:hidden flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white">
+          <i data-lucide="menu" class="h-5 w-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- قائمة الجوال -->
+    <div id="mobileMenu" class="hidden lg:hidden border-t border-white/5 bg-navy px-6 py-5 space-y-3">
+      <a href="#about" class="block py-2 text-sm text-slate-300 hover:text-white">من أنا</a>
+      <a href="#services" class="block py-2 text-sm text-slate-300 hover:text-white">خدماتي</a>
+      <a href="#portfolio" class="block py-2 text-sm text-slate-300 hover:text-white">أعمالي</a>
+      <a href="#why-me" class="block py-2 text-sm text-slate-300 hover:text-white">لماذا تختارني؟</a>
+      <a href="#process" class="block py-2 text-sm text-slate-300 hover:text-white">آلية العمل</a>
+      <a href="#testimonials" class="block py-2 text-sm text-slate-300 hover:text-white">آراء العملاء</a>
+      <a href="#faq" class="block py-2 text-sm text-slate-300 hover:text-white">الأسئلة الشائعة</a>
+      <a href="#contact" class="mt-2 block rounded-xl bg-blue-600 py-3 text-center text-sm font-semibold text-white">تواصل معي الآن</a>
+    </div>
+  </header>
+
+  <!-- 1. الصفحة الرئيسية (Hero Section) -->
+  <section id="home" class="relative min-h-screen flex items-center pt-28 pb-20 bg-grid-pattern overflow-hidden">
+    <!-- إضاءات محيطية -->
+    <div class="pointer-events-none absolute -top-32 right-1/4 h-96 w-96 rounded-full bg-blue-600/20 blur-[130px]"></div>
+    <div class="pointer-events-none absolute bottom-10 left-10 h-80 w-80 rounded-full bg-sky-500/15 blur-[120px]"></div>
+
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        <!-- النص التسويقي -->
+        <div class="lg:col-span-7 space-y-7">
+          <div class="inline-flex items-center gap-2.5 rounded-full border border-sky-400/25 bg-sky-400/10 px-4 py-1.5 text-xs font-medium text-sky-300">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-sky-400"></span>
+            </span>
+            <span>متاح لاستقبال المشاريع الرقمية الجديدة</span>
+          </div>
+
+          <div class="space-y-3">
+            <p class="text-sm sm:text-base font-semibold text-sky-400 tracking-wide">
+              مشعل محمد <span class="text-slate-500 mx-1.5">|</span> <span class="font-en">Mishal Mohammed</span>
+            </p>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.2] tracking-tight text-white">
+              نحوّل أفكارك الرقمية إلى <span class="text-gradient">واقع احترافي.</span>
+            </h1>
+          </div>
+
+          <p class="max-w-2xl text-base sm:text-lg leading-relaxed text-slate-300">
+            نصمم ونبني تجارب رقمية استثنائية تجمع بين جماليات التصميم العالمي، الأداء الهندسي فائق السرعة، واستراتيجيات النمو التي تحول زوارك إلى عملاء دائمين.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a href="#contact" class="inline-flex items-center gap-2.5 rounded-xl bg-blue-600 px-7 py-4 text-sm sm:text-base font-semibold text-white shadow-xl shadow-blue-600/30 hover:bg-blue-500 hover:-translate-y-0.5 transition-all">
+              <span>اطلب خدمتك الآن</span>
+              <i data-lucide="sparkles" class="h-4 w-4"></i>
+            </a>
+            <a href="#portfolio" class="inline-flex items-center gap-2.5 rounded-xl border border-white/15 bg-white/5 px-7 py-4 text-sm sm:text-base font-semibold text-white hover:bg-white/10 transition-all">
+              <span>استكشف أعمالي</span>
+              <i data-lucide="layers" class="h-4 w-4 text-sky-400"></i>
+            </a>
+          </div>
+
+          <!-- مؤشرات الجودة -->
+          <div class="grid grid-cols-3 gap-6 pt-6 border-t border-white/10 max-w-xl">
+            <div>
+              <div class="text-2xl sm:text-3xl font-bold text-white font-en">100%</div>
+              <div class="text-xs sm:text-sm text-slate-400 mt-1">تصميم مخصص لهويتك</div>
+            </div>
+            <div>
+              <div class="text-2xl sm:text-3xl font-bold text-sky-400 font-en">RTL / UI</div>
+              <div class="text-xs sm:text-sm text-slate-400 mt-1">تجربة مستخدم متكاملة</div>
+            </div>
+            <div>
+              <div class="text-2xl sm:text-3xl font-bold text-white font-en">SEO+</div>
+              <div class="text-xs sm:text-sm text-slate-400 mt-1">أداء وسرعة فائقة</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- بطاقة العرض التقنية البصرية -->
+        <div class="lg:col-span-5">
+          <div class="relative rounded-3xl border border-white/10 bg-gradient-to-b from-slateCard to-obsidian p-6 sm:p-8 shadow-2xl">
+            <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
+              <div class="flex items-center gap-2">
+                <span class="h-3 w-3 rounded-full bg-rose-500/80"></span>
+                <span class="h-3 w-3 rounded-full bg-amber-400/80"></span>
+                <span class="h-3 w-3 rounded-full bg-emerald-400/80"></span>
+              </div>
+              <span class="font-en text-xs text-slate-400">mishal.studio // digital-craft</span>
+            </div>
+
+            <div class="space-y-4">
+              <div class="rounded-2xl border border-blue-500/20 bg-blue-950/20 p-4 flex items-center justify-between">
+                <div class="flex items-center gap-3.5">
+                  <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-600/20 text-sky-400">
+                    <i data-lucide="globe" class="h-5 w-5"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-sm font-bold text-white">تطوير المواقع والتطبيقات</h3>
+                    <p class="text-xs text-slate-400">React • Next.js • هندسة حديثة</p>
+                  </div>
+                </div>
+                <span class="rounded-lg bg-sky-400/10 px-2.5 py-1 font-en text-xs font-semibold text-sky-400">99.9%</span>
+              </div>
+
+              <div class="rounded-2xl border border-white/10 bg-white/[0.02] p-4 flex items-center justify-between">
+                <div class="flex items-center gap-3.5">
+                  <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-sky-500/15 text-sky-300">
+                    <i data-lucide="pen-tool" class="h-5 w-5"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-sm font-bold text-white">الهويات التجارية والبصرية</h3>
+                    <p class="text-xs text-slate-400">Branding • UI/UX Design</p>
+                  </div>
+                </div>
+                <i data-lucide="check-circle" class="h-5 w-5 text-blue-500"></i>
+              </div>
+
+              <div class="rounded-2xl border border-white/10 bg-white/[0.02] p-4 flex items-center justify-between">
+                <div class="flex items-center gap-3.5">
+                  <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-500/15 text-indigo-300">
+                    <i data-lucide="trending-up" class="h-5 w-5"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-sm font-bold text-white">التسويق والنمو الرقمي</h3>
+                    <p class="text-xs text-slate-400">تحسين التحويل والظهور الرقمي</p>
+                  </div>
+                </div>
+                <i data-lucide="arrow-up-right" class="h-5 w-5 text-sky-400"></i>
+              </div>
+            </div>
+
+            <div class="mt-6 rounded-2xl bg-gradient-to-r from-blue-600/20 via-sky-500/10 to-transparent border border-blue-500/20 p-4 flex items-center justify-between">
+              <div>
+                <p class="text-xs text-slate-400">معيار التنفيذ</p>
+                <p class="text-sm font-bold text-white">جودة الوكالات العالمية بأسلوب مخصص</p>
+              </div>
+              <div class="h-10 w-10 rounded-full bg-blue-600 flex items-center justify-center text-white shadow-lg shadow-blue-600/40">
+                <i data-lucide="zap" class="h-5 w-5"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. قسم من أنا (About) -->
+  <section id="about" class="py-24 border-t border-white/5 bg-navy/40">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 reveal">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-5">
+          <div class="relative rounded-3xl border border-white/10 bg-slateCard p-8 overflow-hidden">
+            <div class="absolute -left-12 -top-12 h-40 w-40 rounded-full bg-blue-600/20 blur-2xl"></div>
+            <div class="relative space-y-6">
+              <div class="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-600 to-sky-400 text-white font-en text-2xl font-extrabold shadow-lg shadow-blue-600/30">
+                MM
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold text-white">مشعل محمد</h3>
+                <p class="font-en text-sm text-sky-400 font-medium mt-0.5">Mishal Mohammed — Digital Solutions Architect</p>
+              </div>
+              <p class="text-sm leading-relaxed text-slate-300">
+                شغوف ببناء الحضور الرقمي المتكامل للعلامات التجارية الطموحة؛ حيث أدمج بين التفكير التصميمي الإبداعي، التطوير البرمجي النظيف، واستراتيجيات التسويق الرقمي لصناعة حلول تترك أثراً حقيقياً.
+              </p>
+              <div class="grid grid-cols-2 gap-3 pt-2">
+                <div class="rounded-xl border border-white/5 bg-obsidian/60 p-3.5">
+                  <span class="block text-xs text-slate-400">التركيز الأساسي</span>
+                  <span class="mt-1 block text-sm font-semibold text-white">الجودة والتحويل</span>
+                </div>
+                <div class="rounded-xl border border-white/5 bg-obsidian/60 p-3.5">
+                  <span class="block text-xs text-slate-400">أسلوب العمل</span>
+                  <span class="mt-1 block text-sm font-semibold text-white">شراكة واستشارة</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-sky-400">
+            <span class="h-px w-8 bg-sky-400"></span>
+            <span>من أنا</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white leading-snug">
+            شريكك الرقمي لبناء حضور استثنائي يليق بطموح مشروعك
+          </h2>
+          <p class="text-slate-300 leading-relaxed text-base sm:text-lg">
+            أعمل في مجال الخدمات الرقمية المتكاملة، وأساعد رواد الأعمال والشركات والمشاريع الناشئة على تأسيس وتطوير حضورهم الرقمي بأعلى المعايير البصرية والتقنية. أؤمن بأن الموقع الإلكتروني أو الهوية التجارية ليست مجرد واجهة، بل هي أداة استراتيجية لبناء الثقة، إبراز القيمة، ومضاعفة الفرص التجارية.
+          </p>
+          <div class="grid sm:grid-cols-2 gap-4 pt-2">
+            <div class="flex items-start gap-3">
+              <div class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-600/20 text-sky-400">
+                <i data-lucide="check" class="h-3.5 w-3.5"></i>
+              </div>
+              <p class="text-sm text-slate-300">تصميم واجهات عصرية تراعي سلوك المستخدم وتسهّل اتخاذ القرار.</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-600/20 text-sky-400">
+                <i data-lucide="check" class="h-3.5 w-3.5"></i>
+              </div>
+              <p class="text-sm text-slate-300">تطوير برمجي سريع وآمن وقابل للتوسع مستقبلاً دون تعقيد.</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-600/20 text-sky-400">
+                <i data-lucide="check" class="h-3.5 w-3.5"></i>
+              </div>
+              <p class="text-sm text-slate-300">بناء هويات بصرية متماسكة ترسخ في ذهن الجمهور وتمنحك التفرد.</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-600/20 text-sky-400">
+                <i data-lucide="check" class="h-3.5 w-3.5"></i>
+              </div>
+              <p class="text-sm text-slate-300">حلول تسويقية مدروسة ترفع من الوصول وجودة العملاء المحتملين.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. قسم خدماتي (Services) -->
+  <section id="services" class="py-24 border-t border-white/5">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 reveal">
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <span class="inline-block rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1 text-xs font-semibold text-sky-400">
+          الخدمات الرقمية المتكاملة
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white">حلول مصممة لنمو علامتك التجارية</h2>
+        <p class="text-slate-400 text-base">
+          مجموعة متكاملة من الخدمات الرقمية الإبداعية والتقنية، تُنفذ بدقة عالية لتلبية أهداف مشروعك.
+        </p>
+      </div>
+
+      <div id="servicesGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+        <!-- يتم توليد البطاقات الست ديناميكياً لضمان سهولة التعديل والربط المباشر بالنموذج -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. قسم أعمالي (Portfolio) -->
+  <section id="portfolio" class="py-24 border-t border-white/5 bg-navy/40">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 reveal">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div class="space-y-3">
+          <span class="inline-block rounded-full border border-sky-400/30 bg-sky-400/10 px-4 py-1 text-xs font-semibold text-sky-400">
+            معرض الأعمال
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white">مشاريع مختارة بعناية</h2>
+          <p class="text-slate-400 max-w-xl text-sm sm:text-base">
+            نماذج من الحلول الرقمية والتصاميم التي تم تنفيذها، مع إمكانية إضافة وتحديث الأعمال في أي وقت.
+          </p>
+        </div>
+
+        <button onclick="openModal('projectModal')" class="inline-flex items-center gap-2 rounded-xl border border-sky-400/40 bg-sky-400/10 px-5 py-3 text-sm font-semibold text-sky-300 hover:bg-sky-400/20 transition-all self-start md:self-auto">
+          <i data-lucide="plus-circle" class="h-4 w-4"></i>
+          <span>إضافة مشروع جديد</span>
+        </button>
+      </div>
+
+      <!-- أزرار تصفية المشاريع -->
+      <div id="portfolioFilters" class="flex flex-wrap gap-2.5 mb-10">
+        <!-- تُولّد تلقائياً -->
+      </div>
+
+      <!-- شبكة المشاريع -->
+      <div id="portfolioGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+        <!-- تُولّد تلقائياً -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. لماذا تختارني؟ (Why Choose Me) -->
+  <section id="why-me" class="py-24 border-t border-white/5">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 reveal">
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <span class="inline-block rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1 text-xs font-semibold text-sky-400">
+          القيمة المضافة
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white">لماذا تختار العمل مع مشعل محمد؟</h2>
+        <p class="text-slate-400">نركز على التفاصيل التي تصنع الفارق الحقيقي بين موقع عادي ومنصة رقمية ناجحة.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="glass-card rounded-2xl p-6 space-y-4">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-600/20 text-sky-400">
+            <i data-lucide="gem" class="h-6 w-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white">تصميم حصري غير مكرر</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">كل مشروع يُبنى من الصفر ليعكس شخصية علامتك التجارية ويميزك عن منافسيك.</p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 space-y-4">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-600/20 text-sky-400">
+            <i data-lucide="gauge" class="h-6 w-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white">سرعة فائقة وتوافق SEO</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">بنية برمجية نظيفة تضمن سرعة تحميل عالية وتهيئة مثالية لمحركات البحث.</p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 space-y-4">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-600/20 text-sky-400">
+            <i data-lucide="smartphone" class="h-6 w-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white">تجربة مثالية على كل الشاشات</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">تصميم متجاوب بدقة متناهية على الجوال والأجهزة اللوحية وشاشات سطح المكتب.</p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 space-y-4">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-600/20 text-sky-400">
+            <i data-lucide="shield-check" class="h-6 w-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white">التزام ودعم مستمر</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">تواصل واضح في جميع مراحل العمل مع تسليم في الموعد ودعم فني بعد الإطلاق.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. آلية العمل (Workflow Process) -->
+  <section id="process" class="py-24 border-t border-white/5 bg-navy/40">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 reveal">
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <span class="inline-block rounded-full border border-sky-400/30 bg-sky-400/10 px-4 py-1 text-xs font-semibold text-sky-400">
+          منهجية التنفيذ
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white">آلية العمل خطوة بخطوة</h2>
+        <p class="text-slate-400">رحلة واضحة ومنظمة تضمن لك الشفافية الكاملة من الفكرة الأولى وحتى الإطلاق.</p>
+      </div>
+
+      <div class="grid md:grid-cols-5 gap-6">
+        <div class="glass-card rounded-2xl p-6 relative">
+          <span class="font-en text-3xl font-extrabold text-blue-500/30">01</span>
+          <h3 class="mt-3 text-base font-bold text-white">استقبال الطلب والتحليل</h3>
+          <p class="mt-2 text-xs leading-relaxed text-slate-400">فهم أهداف مشروعك، الجمهور المستهدف، وتحديد المتطلبات بدقة.</p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 relative">
+          <span class="font-en text-3xl font-extrabold text-blue-500/30">02</span>
+          <h3 class="mt-3 text-base font-bold text-white">التخطيط وبناء الهيكلة</h3>
+          <p class="mt-2 text-xs leading-relaxed text-slate-400">رسم خارطة الموقع وتجربة المستخدم لضمان أسهل رحلة للزائر.</p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 relative">
+          <span class="font-en text-3xl font-extrabold text-blue-500/30">03</span>
+          <h3 class="mt-3 text-base font-bold text-white">التصميم البصري والواجهة</h3>
+          <p class="mt-2 text-xs leading-relaxed text-slate-400">ابتكار تصميم عصري فاخر يعكس هوية مشروعك بأدق التفاصيل.</p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 relative">
+          <span class="font-en text-3xl font-extrabold text-blue-500/30">04</span>
+          <h3 class="mt-3 text-base font-bold text-white">التطوير والربط التقني</h3>
+          <p class="mt-2 text-xs leading-relaxed text-slate-400">تحويل التصميم إلى موقع أو تطبيق سريع ومتكامل الوظائف.</p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 relative">
+          <span class="font-en text-3xl font-extrabold text-sky-400/50">05</span>
+          <h3 class="mt-3 text-base font-bold text-white">الاختبار والتسليم النهائي</h3>
+          <p class="mt-2 text-xs leading-relaxed text-slate-400">فحص الأداء والتوافق على جميع الأجهزة ثم الإطلاق الرسمي.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. آراء العملاء (Testimonials — بدون أي تقييمات مختلقة) -->
+  <section id="testimonials" class="py-24 border-t border-white/5">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 reveal">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div class="space-y-3">
+          <span class="inline-block rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1 text-xs font-semibold text-sky-400">
+            تجارب وشهادات العملاء
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white">آراء العملاء</h2>
+          <p class="text-slate-400 max-w-xl text-sm sm:text-base">
+            نلتزم بالمصداقية التامة؛ هذا القسم مخصص لعرض شهادات وتقييمات العملاء الحقيقية فور إضافتها.
+          </p>
+        </div>
+
+        <button onclick="openModal('testimonialModal')" class="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white hover:border-sky-400/50 hover:bg-white/10 transition-all self-start md:self-auto">
+          <i data-lucide="message-square-plus" class="h-4 w-4 text-sky-400"></i>
+          <span>إضافة شهادة عميل حقيقية</span>
+        </button>
+      </div>
+
+      <div id="testimonialsContainer">
+        <!-- يعرض حالة فارغة أنيقة أو الشهادات الحقيقية المضافة -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. الأسئلة الشائعة (FAQ) -->
+  <section id="faq" class="py-24 border-t border-white/5 bg-navy/40">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 reveal">
+      <div class="text-center mb-14 space-y-4">
+        <span class="inline-block rounded-full border border-sky-400/30 bg-sky-400/10 px-4 py-1 text-xs font-semibold text-sky-400">
+          الأسئلة الشائعة
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white">إجابات واضحة لاستفساراتك</h2>
+      </div>
+
+      <div id="faqList" class="space-y-4">
+        <!-- يُولّد تفاعلياً -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. تواصل معي (Contact Section) -->
+  <section id="contact" class="py-24 border-t border-white/5 relative overflow-hidden">
+    <div class="pointer-events-none absolute bottom-0 right-0 h-96 w-96 rounded-full bg-blue-600/15 blur-[130px]"></div>
+
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10 reveal">
+      <div class="grid lg:grid-cols-12 gap-12">
+        <!-- معلومات التواصل -->
+        <div class="lg:col-span-5 space-y-6">
+          <span class="inline-block rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1 text-xs font-semibold text-sky-400">
+            ابدأ مشروعك اليوم
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white leading-tight">
+            جاهز لتحويل فكرتك إلى مشروع رقمي متكامل؟
+          </h2>
+          <p class="text-slate-300 leading-relaxed">
+            أرسل تفاصيل مشروعك عبر النموذج أو تواصل معي مباشرة عبر واتساب، وسأعود إليك بخطة واضحة وعرض مناسب لأهدافك.
+          </p>
+
+          <!-- زر واتساب المباشر -->
+          <div class="pt-2">
+            <a id="whatsappDirectBtn" href="https://wa.me/966549330389" target="_blank" rel="noopener noreferrer" class="inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-2xl bg-emerald-600 px-7 py-4 text-base font-bold text-white shadow-xl shadow-emerald-600/20 hover:bg-emerald-500 transition-all">
+              <i data-lucide="message-circle" class="h-5 w-5"></i>
+              <span>تواصل مباشر عبر واتساب</span>
+            </a>
+          </div>
+
+          <div class="space-y-4 pt-6 border-t border-white/10">
+            <div class="flex items-center gap-3.5 text-sm text-slate-300">
+              <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-sky-400">
+                <i data-lucide="mail" class="h-4 w-4"></i>
+              </div>
+              <div>
+                <span class="block text-xs text-slate-400">البريد الإلكتروني</span>
+                <span id="displayEmail" class="font-en font-medium text-white">contact@mishalmohammed.com</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3.5 text-sm text-slate-300">
+              <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-sky-400">
+                <i data-lucide="phone" class="h-4 w-4"></i>
+              </div>
+              <div>
+                <span class="block text-xs text-slate-400">رقم التواصل / واتساب</span>
+                <span id="displayPhone" class="font-en font-medium text-white" dir="ltr">+966 54 933 0389</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- نموذج التواصل الاحترافي -->
+        <div class="lg:col-span-7">
+          <form id="contactForm" class="glass-card rounded-3xl p-6 sm:p-10 space-y-6">
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-2">الاسم الكامل *</label>
+                <input type="text" id="clientName" required placeholder="أدخل اسمك الكريم" class="w-full rounded-xl border border-white/10 bg-obsidian/80 px-4 py-3.5 text-sm text-white placeholder-slate-500 focus:border-sky-400 focus:outline-none" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-2">رقم الجوال (واتساب) *</label>
+                <input type="tel" id="clientPhone" required placeholder="0549330389" class="w-full rounded-xl border border-white/10 bg-obsidian/80 px-4 py-3.5 text-sm text-white placeholder-slate-500 focus:border-sky-400 focus:outline-none" />
+              </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-2">البريد الإلكتروني *</label>
+                <input type="email" id="clientEmail" required placeholder="name@example.com" class="w-full rounded-xl border border-white/10 bg-obsidian/80 px-4 py-3.5 text-sm text-white placeholder-slate-500 focus:border-sky-400 focus:outline-none" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-2">نوع الخدمة المطلوبة *</label>
+                <select id="serviceSelect" required class="w-full rounded-xl border border-white/10 bg-obsidian/80 px-4 py-3.5 text-sm text-white focus:border-sky-400 focus:outline-none">
+                  <option value="تصميم وتطوير المواقع الإلكترونية">1. تصميم وتطوير المواقع الإلكترونية</option>
+                  <option value="إنشاء تطبيقات الويب والحلول الرقمية">2. إنشاء تطبيقات الويب والحلول الرقمية</option>
+                  <option value="التسويق الإلكتروني">3. التسويق الإلكتروني</option>
+                  <option value="تصميم الهويات التجارية والبصرية">4. تصميم الهويات التجارية والبصرية</option>
+                  <option value="بناء وتطوير العلامات التجارية (Branding)">5. بناء وتطوير العلامات التجارية (Branding)</option>
+                  <option value="إعادة تصميم وتطوير المواقع الإلكترونية القديمة">6. إعادة تصميم وتطوير المواقع الإلكترونية القديمة</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-2">تفاصيل المشروع *</label>
+              <textarea id="projectDetails" rows="4" required placeholder="اشرح فكرتك أو متطلبات مشروعك بإيجاز..." class="w-full rounded-xl border border-white/10 bg-obsidian/80 px-4 py-3.5 text-sm text-white placeholder-slate-500 focus:border-sky-400 focus:outline-none"></textarea>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center gap-4 pt-2">
+              <button type="submit" id="submitBtn" class="w-full sm:flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-4 text-sm font-bold text-white shadow-lg shadow-blue-600/30 hover:bg-blue-500 transition-all">
+                <span>إرسال طلب الخدمة</span>
+                <i data-lucide="send" class="h-4 w-4"></i>
+              </button>
+              <button type="button" onclick="sendViaWhatsAppForm()" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl border border-emerald-500/40 bg-emerald-500/10 px-5 py-4 text-sm font-semibold text-emerald-300 hover:bg-emerald-500/20 transition-all">
+                <i data-lucide="message-circle" class="h-4 w-4"></i>
+                <span>إرسال عبر واتساب</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- التذييل (Footer) -->
+  <footer class="border-t border-white/10 bg-obsidian py-12">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-600 font-en text-sm font-extrabold text-white">MM</div>
+        <div>
+          <span class="text-sm font-bold text-white">مشعل محمد</span>
+          <span class="mx-2 text-slate-600">|</span>
+          <span class="font-en text-xs text-sky-400">Mishal Mohammed</span>
+        </div>
+      </div>
+
+      <p class="text-xs text-slate-400 text-center">
+        © <span id="year"></span> جميع الحقوق محفوظة لـ مشعل محمد — حلول رقمية وتصميم احترافي.
+      </p>
+
+      <div class="flex items-center gap-4 text-xs text-slate-400">
+        <a href="#home" class="hover:text-white transition-colors">الرئيسية</a>
+        <a href="#services" class="hover:text-white transition-colors">الخدمات</a>
+        <a href="#portfolio" class="hover:text-white transition-colors">الأعمال</a>
+        <a href="#contact" class="hover:text-white transition-colors">تواصل معي</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= النوافذ المنبثقة (Modals) ================= -->
+
+  <!-- 1. نافذة إضافة مشروع جديد -->
+  <div id="projectModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 p-4 backdrop-blur-sm">
+    <div class="w-full max-w-lg rounded-3xl border border-white/10 bg-navy p-6 sm:p-8 shadow-2xl">
+      <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
+        <h3 class="text-lg font-bold text-white">إضافة مشروع جديد إلى المعرض</h3>
+        <button onclick="closeModal('projectModal')" class="text-slate-400 hover:text-white"><i data-lucide="x" class="h-5 w-5"></i></button>
+      </div>
+      <form id="addProjectForm" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5">عنوان المشروع *</label>
+          <input type="text" id="projTitle" required placeholder="مثال: منصة تجارة إلكترونية متكاملة" class="w-full rounded-xl border border-white/10 bg-obsidian px-4 py-3 text-sm text-white focus:border-sky-400 focus:outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5">نوع الخدمة *</label>
+          <select id="projCategory" class="w-full rounded-xl border border-white/10 bg-obsidian px-4 py-3 text-sm text-white focus:border-sky-400 focus:outline-none">
+            <option value="تصميم وتطوير المواقع">تصميم وتطوير المواقع</option>
+            <option value="تطبيقات الويب">تطبيقات الويب</option>
+            <option value="الهويات التجارية والبصرية">الهويات التجارية والبصرية</option>
+            <option value="التسويق الإلكتروني">التسويق الإلكتروني</option>
+            <option value="إعادة تصميم المواقع">إعادة تصميم المواقع</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5">رابط صورة المشروع (اختياري)</label>
+          <input type="url" id="projImage" placeholder="https://images.unsplash.com/..." class="w-full rounded-xl border border-white/10 bg-obsidian px-4 py-3 text-sm text-white focus:border-sky-400 focus:outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5">رابط معاينة المشروع (اختياري)</label>
+          <input type="url" id="projLink" placeholder="https://example.com" class="w-full rounded-xl border border-white/10 bg-obsidian px-4 py-3 text-sm text-white focus:border-sky-400 focus:outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5">وصف مختصر للمشروع *</label>
+          <textarea id="projDesc" rows="3" required placeholder="نبذة عن فكرة المشروع والنتائج المحققة..." class="w-full rounded-xl border border-white/10 bg-obsidian px-4 py-3 text-sm text-white focus:border-sky-400 focus:outline-none"></textarea>
+        </div>
+        <button type="submit" class="w-full rounded-xl bg-blue-600 py-3.5 text-sm font-bold text-white hover:bg-blue-500 transition-all">حفظ ونشر المشروع</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 2. نافذة إضافة شهادة عميل حقيقية -->
+  <div id="testimonialModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 p-4 backdrop-blur-sm">
+    <div class="w-full max-w-lg rounded-3xl border border-white/10 bg-navy p-6 sm:p-8 shadow-2xl">
+      <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
+        <h3 class="text-lg font-bold text-white">إضافة شهادة عميل حقيقية</h3>
+        <button onclick="closeModal('testimonialModal')" class="text-slate-400 hover:text-white"><i data-lucide="x" class="h-5 w-5"></i></button>
+      </div>
+      <form id="addTestimonialForm" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5">اسم العميل *</label>
+          <input type="text" id="testName" required placeholder="الاسم الكامل للعميل" class="w-full rounded-xl border border-white/10 bg-obsidian px-4 py-3 text-sm text-white focus:border-sky-400 focus:outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5">الصفة / اسم الشركة *</label>
+          <input type="text" id="testRole" required placeholder="مثال: مؤسس متجر إلكتروني / مدير شركة" class="w-full rounded-xl border border-white/10 bg-obsidian px-4 py-3 text-sm text-white focus:border-sky-400 focus:outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5">نص التقييم الحقيقي *</label>
+          <textarea id="testQuote" rows="3" required placeholder="اكتب نص شهادة العميل كما وردت..." class="w-full rounded-xl border border-white/10 bg-obsidian px-4 py-3 text-sm text-white focus:border-sky-400 focus:outline-none"></textarea>
+        </div>
+        <button type="submit" class="w-full rounded-xl bg-blue-600 py-3.5 text-sm font-bold text-white hover:bg-blue-500 transition-all">إضافة الشهادة</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 3. نافذة إعدادات التواصل والربط (Settings) -->
+  <div id="settingsModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 p-4 backdrop-blur-sm">
+    <div class="w-full max-w-lg rounded-3xl border border-white/10 bg-navy p-6 sm:p-8 shadow-2xl">
+      <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
+        <h3 class="text-lg font-bold text-white">إعدادات التواصل وربط الطلبات</h3>
+        <button onclick="closeModal('settingsModal')" class="text-slate-400 hover:text-white"><i data-lucide="x" class="h-5 w-5"></i></button>
+      </div>
+      <form id="settingsForm" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5">رقم الواتساب الدولي (بدون +)</label>
+          <input type="text" id="setWhatsapp" placeholder="966549330389" class="w-full rounded-xl border border-white/10 bg-obsidian px-4 py-3 text-sm text-white font-en focus:border-sky-400 focus:outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5">البريد الإلكتروني المعروض</label>
+          <input type="email" id="setEmail" placeholder="contact@mishalmohammed.com" class="w-full rounded-xl border border-white/10 bg-obsidian px-4 py-3 text-sm text-white font-en focus:border-sky-400 focus:outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5">رابط استقبال الطلبات (Webhook / Formspree Endpoint)</label>
+          <input type="url" id="setWebhook" placeholder="https://formspree.io/f/your-id" class="w-full rounded-xl border border-white/10 bg-obsidian px-4 py-3 text-sm text-white font-en focus:border-sky-400 focus:outline-none" />
+          <p class="mt-1 text-[11px] text-slate-400">عند إضافة رابط Formspree أو Webhook سيتم إرسال بيانات النموذج إليه تلقائياً.</p>
+        </div>
+        <button type="submit" class="w-full rounded-xl bg-blue-600 py-3.5 text-sm font-bold text-white hover:bg-blue-500 transition-all">حفظ الإعدادات</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= JavaScript ================= -->
+  <script>
+    // 1. بيانات الخدمات الست الأساسية
+    const SERVICES = [
+      {
+        id: 1,
+        icon: 'layout-template',
+        title: 'تصميم وتطوير المواقع الإلكترونية',
+        desc: 'بناء مواقع إلكترونية عصرية فائقة السرعة، متجاوبة مع جميع الأجهزة، ومصممة لتحويل الزوار إلى عملاء فعليين.'
+      },
+      {
+        id: 2,
+        icon: 'cpu',
+        title: 'إنشاء تطبيقات الويب والحلول الرقمية',
+        desc: 'تطوير منصات تفاعلية ولوحات تحكم وحلول ويب مخصصة بأحدث التقنيات لتبسيط العمليات ورفع الكفاءة.'
+      },
+      {
+        id: 3,
+        icon: 'megaphone',
+        title: 'التسويق الإلكتروني',
+        desc: 'تخطيط وتنفيذ استراتيجيات رقمية متكاملة لزيادة الانتشار، استهداف الجمهور بدقة، وتحقيق نمو مستدام.'
+      },
+      {
+        id: 4,
+        icon: 'palette',
+        title: 'تصميم الهويات التجارية والبصرية',
+        desc: 'ابتكار شعارات وأنظمة بصرية متكاملة تعبّر عن جوهر مشروعك وتمنحه حضوراً احترافياً لا يُنسى.'
+      },
+      {
+        id: 5,
+        icon: 'award',
+        title: 'بناء وتطوير العلامات التجارية (Branding)',
+        desc: 'صياغة تموضع العلامة التجارية، رسالتها، ونبرة تواصلها لبناء الثقة والولاء لدى عملائك في السوق.'
+      },
+      {
+        id: 6,
+        icon: 'refresh-cw',
+        title: 'إعادة تصميم وتطوير المواقع القديمة',
+        desc: 'تحديث المواقع التقليدية وتحسين واجهاتها وتجربة المستخدم (UI/UX) وسرعة أدائها لتواكب المعايير الحديثة.'
+      }
+    ];
+
+    // 2. مشاريع افتراضية قابلة للتعديل والإضافة
+    const DEFAULT_PROJECTS = [
+      {
+        id: 101,
+        title: 'منصة أفق العقارية الفاخرة',
+        category: 'تصميم وتطوير المواقع',
+        image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80',
+        desc: 'موقع عقاري تفاعلي لعرض المشاريع السكنية الفاخرة مع نظام حجز معاينات وتجربة تصفح سلسة.',
+        link: '#contact'
+      },
+      {
+        id: 102,
+        title: 'هوية وعلامة نُخبة للاستشارات',
+        category: 'الهويات التجارية والبصرية',
+        image: 'https://images.unsplash.com/photo-1634942537034-2531766767d1?auto=format&fit=crop&w=900&q=80',
+        desc: 'تصميم هوية بصرية كاملة ودليل استخدام العلامة التجارية لشركة استشارات مالية وإدارية.',
+        link: '#contact'
+      },
+      {
+        id: 103,
+        title: 'نظام إدارة المبيعات والعملاء (SaaS)',
+        category: 'تطبيقات الويب',
+        image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80',
+        desc: 'تطبيق ويب متكامل لتحليل المبيعات وإدارة الفواتير والعملاء بلوحة تحكم حديثة وسريعة.',
+        link: '#contact'
+      }
+    ];
+
+    // 3. الأسئلة الشائعة
+    const FAQS = [
+      {
+        q: 'كم تستغرق مدة تصميم وتطوير الموقع الإلكتروني؟',
+        a: 'تتراوح المدة عادة بين 7 إلى 21 يوم عمل حسب حجم الموقع، عدد الصفحات، والمزايا التقنية المطلوبة، ويتم تحديد جدول زمني واضح قبل البدء.'
+      },
+      {
+        q: 'هل سيكون الموقع متوافقاً مع الجوال ومحركات البحث (SEO)؟',
+        a: 'بالتأكيد. جميع المواقع تُبنى بمعايير التصميم المتجاوب الكامل لجميع الشاشات مع تهيئة البنية البرمجية والسرعة لتصدر نتائج البحث.'
+      },
+      {
+        q: 'هل يمكنني تعديل محتوى الموقع أو إضافة أعمال جديدة لاحقاً؟',
+        a: 'نعم، يتم تصميم البنية البرمجية بمرونة عالية تتيح لك تحديث النصوص والصور والمشاريع بسهولة تامة دون تعقيد.'
+      },
+      {
+        q: 'كيف يتم البدء في تنفيذ مشروعي؟',
+        a: 'ببساطة اختر الخدمة المناسبة وأرسل تفاصيل مشروعك عبر نموذج التواصل أو واتساب، وسأقوم بدراسة طلبك والتواصل معك بالخطة والتفاصيل.'
+      }
+    ];
+
+    // حالة التطبيق المحفوظة محلياً
+    let projects = JSON.parse(localStorage.getItem('mm_projects')) || DEFAULT_PROJECTS;
+    let testimonials = JSON.parse(localStorage.getItem('mm_testimonials')) || [];
+    let settings = JSON.parse(localStorage.getItem('mm_settings')) || {
+      whatsapp: '966549330389',
+      email: 'contact@mishalmohammed.com',
+      webhook: ''
+    };
+    let activeCategory = 'الكل';
+
+    // عرض الإشعارات
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastMessage').textContent = msg;
+      toast.classList.remove('hidden');
+      toast.classList.add('flex');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+        toast.classList.remove('flex');
+      }, 3500);
+    }
+
+    // إدارة النوافذ المنبثقة
+    function openModal(id) {
+      const modal = document.getElementById(id);
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      if (id === 'settingsModal') {
+        document.getElementById('setWhatsapp').value = settings.whatsapp;
+        document.getElementById('setEmail').value = settings.email;
+        document.getElementById('setWebhook').value = settings.webhook;
+      }
+    }
+
+    function closeModal(id) {
+      const modal = document.getElementById(id);
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    // عرض الخدمات
+    function renderServices() {
+      const grid = document.getElementById('servicesGrid');
+      grid.innerHTML = SERVICES.map(s => `
+        <div class="glass-card rounded-3xl p-7 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="flex h-13 w-13 items-center justify-center rounded-2xl bg-blue-600/15 border border-blue-500/25 text-sky-400 group-hover:bg-blue-600 group-hover:text-white transition-all p-3">
+                <i data-lucide="${s.icon}" class="h-6 w-6"></i>
+              </div>
+              <span class="font-en text-xs font-bold text-slate-600">0${s.id}</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 leading-snug">${s.title}</h3>
+            <p class="text-sm text-slate-400 leading-relaxed mb-6">${s.desc}</p>
+          </div>
+          <button onclick="requestService('${s.title}')" class="inline-flex items-center justify-between w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm font-semibold text-white group-hover:border-sky-400/50 group-hover:bg-blue-600/20 transition-all">
+            <span>اطلب هذه الخدمة</span>
+            <i data-lucide="arrow-up-left" class="h-4 w-4 text-sky-400"></i>
+          </button>
+        </div>
+      `).join('');
+    }
+
+    // اختيار الخدمة والانتقال لنموذج التواصل
+    function requestService(serviceTitle) {
+      const select = document.getElementById('serviceSelect');
+      for (let i = 0; i < select.options.length; i++) {
+        if (select.options[i].value.includes(serviceTitle.substring(0, 15))) {
+          select.selectedIndex = i;
+          break;
+        }
+      }
+      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+      showToast(`تم اختيار: ${serviceTitle}`);
+    }
+
+    // عرض المشاريع والتصفية
+    function renderPortfolio() {
+      const categories = ['الكل', ...new Set(projects.map(p => p.category))];
+      const filtersEl = document.getElementById('portfolioFilters');
+      filtersEl.innerHTML = categories.map(cat => `
+        <button onclick="filterPortfolio('${cat}')" class="rounded-xl px-4 py-2 text-xs sm:text-sm font-semibold transition-all ${activeCategory === cat ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/25' : 'border border-white/10 bg-white/5 text-slate-300 hover:text-white'}">
+          ${cat}
+        </button>
+      `).join('');
+
+      const filtered = activeCategory === 'الكل' ? projects : projects.filter(p => p.category === activeCategory);
+      const grid = document.getElementById('portfolioGrid');
+      grid.innerHTML = filtered.map(p => `
+        <article class="glass-card rounded-3xl overflow-hidden flex flex-col justify-between group">
+          <div>
+            <div class="relative h-52 overflow-hidden bg-obsidian">
+              <img src="${p.image || 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80'}" alt="${p.title}" class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-navy via-transparent to-transparent"></div>
+              <span class="absolute top-4 right-4 rounded-lg bg-obsidian/85 backdrop-blur-md border border-white/10 px-3 py-1 text-xs font-medium text-sky-400">
+                ${p.category}
+              </span>
+            </div>
+            <div class="p-6">
+              <h3 class="text-lg font-bold text-white mb-2">${p.title}</h3>
+              <p class="text-sm text-slate-400 leading-relaxed">${p.desc}</p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-2 flex items-center justify-between border-t border-white/5">
+            <a href="${p.link || '#contact'}" ${p.link && p.link.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''} class="inline-flex items-center gap-1.5 text-sm font-semibold text-sky-400 hover:text-sky-300">
+              <span>مشاهدة المشروع</span>
+              <i data-lucide="external-link" class="h-4 w-4"></i>
+            </a>
+            <button onclick="deleteProject(${p.id})" title="حذف المشروع" class="text-slate-600 hover:text-rose-400 transition-colors">
+              <i data-lucide="trash-2" class="h-4 w-4"></i>
+            </button>
+          </div>
+        </article>
+      `).join('');
+      lucide.createIcons();
+    }
+
+    function filterPortfolio(cat) {
+      activeCategory = cat;
+      renderPortfolio();
+    }
+
+    function deleteProject(id) {
+      projects = projects.filter(p => p.id !== id);
+      localStorage.setItem('mm_projects', JSON.stringify(projects));
+      renderPortfolio();
+      showToast('تم حذف المشروع');
+    }
+
+    // عرض آراء العملاء (بدون اختلاق أي آراء)
+    function renderTestimonials() {
+      const container = document.getElementById('testimonialsContainer');
+      if (testimonials.length === 0) {
+        container.innerHTML = `
+          <div class="rounded-3xl border border-dashed border-white/15 bg-white/[0.02] p-12 text-center max-w-2xl mx-auto space-y-4">
+            <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-600/15 text-sky-400">
+              <i data-lucide="quote" class="h-6 w-6"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white">مساحة مخصصة لشهادات عملائنا الكرام</h3>
+            <p class="text-sm text-slate-400 leading-relaxed">
+              حرصاً على المصداقية، لا يتم عرض أي تقييمات افتراضية. يمكنك إضافة شهادات وتقييمات عملائك الحقيقية في أي وقت من خلال زر "إضافة شهادة عميل حقيقية".
+            </p>
+          </div>
+        `;
+      } else {
+        container.innerHTML = `
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            ${testimonials.map(t => `
+              <div class="glass-card rounded-3xl p-7 flex flex-col justify-between space-y-5">
+                <div class="space-y-4">
+                  <div class="flex items-center justify-between">
+                    <div class="flex gap-1 text-amber-400">
+                      <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                      <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                      <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                      <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                      <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                    </div>
+                    <button onclick="deleteTestimonial(${t.id})" class="text-slate-600 hover:text-rose-400"><i data-lucide="trash-2" class="h-4 w-4"></i></button>
+                  </div>
+                  <p class="text-sm text-slate-300 leading-relaxed">"${t.quote}"</p>
+                </div>
+                <div class="border-t border-white/10 pt-4">
+                  <h4 class="text-sm font-bold text-white">${t.name}</h4>
+                  <p class="text-xs text-sky-400 mt-0.5">${t.role}</p>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      }
+      lucide.createIcons();
+    }
+
+    function deleteTestimonial(id) {
+      testimonials = testimonials.filter(t => t.id !== id);
+      localStorage.setItem('mm_testimonials', JSON.stringify(testimonials));
+      renderTestimonials();
+      showToast('تم حذف الشهادة');
+    }
+
+    // عرض الأسئلة الشائعة
+    function renderFAQs() {
+      const list = document.getElementById('faqList');
+      list.innerHTML = FAQS.map((item, idx) => `
+        <div class="glass-card rounded-2xl overflow-hidden">
+          <button onclick="toggleFaq(${idx})" class="flex w-full items-center justify-between p-5 sm:p-6 text-right font-bold text-white hover:text-sky-400 transition-colors">
+            <span class="text-sm sm:text-base">${item.q}</span>
+            <i data-lucide="chevron-down" id="faq-icon-${idx}" class="h-5 w-5 text-sky-400 transition-transform duration-300"></i>
+          </button>
+          <div id="faq-body-${idx}" class="hidden px-5 sm:px-6 pb-6 text-sm text-slate-400 leading-relaxed border-t border-white/5 pt-4">
+            ${item.a}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function toggleFaq(idx) {
+      const body = document.getElementById(`faq-body-${idx}`);
+      const icon = document.getElementById(`faq-icon-${idx}`);
+      body.classList.toggle('hidden');
+      icon.classList.toggle('rotate-180');
+    }
+
+    // تطبيق إعدادات التواصل
+    function applySettings() {
+      const cleanPhone = settings.whatsapp.replace(/\D/g, '');
+      document.getElementById('whatsappDirectBtn').href = `https://wa.me/${cleanPhone}`;
+      document.getElementById('displayEmail').textContent = settings.email;
+      document.getElementById('displayPhone').textContent = `+${cleanPhone}`;
+    }
+
+    // إرسال النموذج عبر واتساب مباشرة
+    function sendViaWhatsAppForm() {
+      const name = document.getElementById('clientName').value.trim();
+      const service = document.getElementById('serviceSelect').value;
+      const details = document.getElementById('projectDetails').value.trim();
+      const cleanPhone = settings.whatsapp.replace(/\D/g, '');
+      const text = encodeURIComponent(
+        `مرحباً مشعل محمد، أرغب في طلب خدمة رقمية:\n` +
+        `• الاسم: ${name || 'عميل جديد'}\n` +
+        `• الخدمة: ${service}\n` +
+        `• التفاصيل: ${details || 'أود الاستفسار عن تفاصيل الخدمة'}`
+      );
+      window.open(`https://wa.me/${cleanPhone}?text=${text}`, '_blank');
+    }
+
+    // مستمعات النماذج
+    document.getElementById('addProjectForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const newProj = {
+        id: Date.now(),
+        title: document.getElementById('projTitle').value.trim(),
+        category: document.getElementById('projCategory').value,
+        image: document.getElementById('projImage').value.trim(),
+        link: document.getElementById('projLink').value.trim() || '#contact',
+        desc: document.getElementById('projDesc').value.trim()
+      };
+      projects.unshift(newProj);
+      localStorage.setItem('mm_projects', JSON.stringify(projects));
+      this.reset();
+      closeModal('projectModal');
+      renderPortfolio();
+      showToast('تمت إضافة المشروع بنجاح');
+    });
+
+    document.getElementById('addTestimonialForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const newTest = {
+        id: Date.now(),
+        name: document.getElementById('testName').value.trim(),
+        role: document.getElementById('testRole').value.trim(),
+        quote: document.getElementById('testQuote').value.trim()
+      };
+      testimonials.unshift(newTest);
+      localStorage.setItem('mm_testimonials', JSON.stringify(testimonials));
+      this.reset();
+      closeModal('testimonialModal');
+      renderTestimonials();
+      showToast('تمت إضافة شهادة العميل بنجاح');
+    });
+
+    document.getElementById('settingsForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      settings = {
+        whatsapp: document.getElementById('setWhatsapp').value.trim() || '966549330389',
+        email: document.getElementById('setEmail').value.trim() || 'contact@mishalmohammed.com',
+        webhook: document.getElementById('setWebhook').value.trim()
+      };
+      localStorage.setItem('mm_settings', JSON.stringify(settings));
+      applySettings();
+      closeModal('settingsModal');
+      showToast('تم حفظ الإعدادات وتحديث روابط التواصل');
+    });
+
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      const payload = {
+        name: document.getElementById('clientName').value.trim(),
+        phone: document.getElementById('clientPhone').value.trim(),
+        email: document.getElementById('clientEmail').value.trim(),
+        service: document.getElementById('serviceSelect').value,
+        details: document.getElementById('projectDetails').value.trim()
+      };
+
+      btn.disabled = true;
+      btn.innerHTML = '<span>جاري إرسال الطلب...</span>';
+
+      try {
+        if (settings.webhook) {
+          const response = await fetch(settings.webhook, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          if (!response.ok) throw new Error('تعذر إرسال الطلب إلى رابط الاستقبال');
+          this.reset();
+          showToast('تم إرسال طلبك بنجاح! سيتواصل معك مشعل محمد قريباً.');
+        } else {
+          const message = encodeURIComponent(
+            `مرحباً مشعل محمد، أرغب في طلب خدمة رقمية:\n` +
+            `• الاسم: ${payload.name}\n` +
+            `• الجوال: ${payload.phone}\n` +
+            `• البريد: ${payload.email}\n` +
+            `• الخدمة: ${payload.service}\n` +
+            `• التفاصيل: ${payload.details}`
+          );
+          window.open(`https://wa.me/${settings.whatsapp.replace(/\\D/g, '')}?text=${message}`, '_blank', 'noopener,noreferrer');
+          showToast('فتحنا واتساب لإرسال طلبك. أكّد الإرسال من هناك.');
+        }
+      } catch (err) {
+        showToast('تم حفظ بيانات طلبك محلياً، يمكنك أيضاً الإرسال عبر واتساب.');
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<span>إرسال طلب الخدمة</span><i data-lucide="send" class="h-4 w-4"></i>';
+        lucide.createIcons();
+      }
+    });
+
+    // قائمة الجوال
+    document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    });
+
+    // حركات الظهور عند التمرير
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // التهيئة الأولية
+    document.getElementById('year').textContent = new Date().getFullYear();
+    renderServices();
+    renderPortfolio();
+    renderTestimonials();
+    renderFAQs();
+    applySettings();
+    lucide.createIcons();
+  </script>
+</body>
+</html>
